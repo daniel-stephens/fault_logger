@@ -1,0 +1,21 @@
+form method="POST" action="">
+    {{form.hidden_tag() }}
+      <div class="textbox">
+          {{ form.motors.label(class="form-control-label") }}
+          {% if form.motors.errors %}
+              {{ form.motors(class="form-control form-control-lg is-invalid") }}
+              <div class="invalid-feedback">
+                  {% for error in form.motors.errors %}
+                      <span>{{ error }}</span>
+                  {% endfor %}
+              </div>
+          {% else %}
+              {{ form.motors(class="form-control form-control-lg") }}
+          {% endif %}
+      </div>  
+    <div class="form-group">
+        {{ form.submit(class="btn btn-outline-info") }}
+    </div>
+</form>
+<br>
+{{ results}}

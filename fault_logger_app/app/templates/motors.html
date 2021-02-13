@@ -1,0 +1,104 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="content-section">
+    <div class="media">
+      <div class="media-body">
+        <h2 class="ml-2">{{ current_user.first_name }} {{ current_user.last_name }}</h2>
+        <p class="ml-2">{{ current_user.email }}</p>
+      </div>
+    </div>
+     <div class = 'panel'>   
+          <div class='form_header'>
+              <h1> Add Motors</h1>
+          </div>
+          <form method="POST" action="">
+              {{form.hidden_tag() }}
+                <div class="textbox">
+                    {{ form.serial_number.label(class="form-control-label") }}
+                    {% if form.serial_number.errors %}
+                        {{ form.serial_number(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.serial_number.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.serial_number(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>  
+                  <div class="textbox">
+                      {{ form.rating.label(class="form-control-label") }}
+                      {% if form.rating.errors %}
+                          {{ form.rating(class="form-control form-control-lg is-invalid") }}
+                          <div class="invalid-feedback">
+                              {% for error in form.rating.errors %}
+                                  <span>{{ error }}</span>
+                              {% endfor %}
+                          </div>
+                      {% else %}
+                          {{ form.rating(class="form-control form-control-lg") }}
+                      {% endif %}
+                  </div>
+                  <div class="textbox">
+                    {{ form.voltage.label(class="form-control-label") }}
+                    {% if form.voltage.errors %}
+                            {{ form.voltage(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.voltage.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.voltage(class="form-control form-control-lg") }}
+                        {% endif %}
+                </div>
+                  <div class="textbox">
+                      {{ form.current.label(class="form-control-label") }}
+                      {% if form.current.errors %}
+                          {{ form.current(class="form-control form-control-lg is-invalid") }}
+                          <div class="invalid-feedback">
+                              {% for error in form.current.errors %}
+                                  <span>{{ error }}</span>
+                              {% endfor %}
+                          </div>
+                      {% else %}
+                          {{ form.current(class="form-control form-control-lg") }}
+                      {% endif %}
+                  </div>
+                  <div class="textbox">
+                      {{ form.frame_size.label(class="form-control-label") }}
+                      {% if form.frame_size.errors %}
+                              {{ form.frame_size(class="form-control form-control-lg is-invalid") }}
+                              <div class="invalid-feedback">
+                                  {% for error in form.frame_size.errors %}
+                                      <span>{{ error }}</span>
+                                  {% endfor %}
+                              </div>
+                          {% else %}
+                              {{ form.frame_size(class="form-control form-control-lg") }}
+                          {% endif %}
+                  </div>
+                  <div class="textbox">
+                    {{ form.number_of_poles.label(class="form-control-label") }}
+                    {% if form.number_of_poles.errors %}
+                            {{ form.number_of_poles(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.number_of_poles.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.number_of_poles(class="form-control form-control-lg") }}
+                        {% endif %}
+                </div>
+                                          <br>
+                  <div class="form-group">
+                      {{ form.submit(class="btn btn-outline-info") }}
+                  </div>
+          </form>
+          
+          <div >
+        </div> 
+  </div>
+  
+{% endblock %}

@@ -1,0 +1,103 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="content-section">
+    <div class="media">
+      <div class="media-body">
+        <h2 class="ml-2">{{ current_user.first_name }} {{ current_user.last_name }}</h2>
+        <p class="ml-2">{{ current_user.email }}</p>
+      </div>
+    </div>
+     <div class = 'panel'>   
+          <div class='form_header'>
+              <h1> MOTOR USAGE</h1>
+          </div>
+          <form method="POST" action="">
+              {{form.hidden_tag() }}
+                  <div class="textbox">
+                      {{ form.number.label(class="form-control-label") }}
+                      {% if form.number.errors %}
+                          {{ form.number(class="form-control form-control-lg is-invalid") }}
+                          <div class="invalid-feedback">
+                              {% for error in form.number.errors %}
+                                  <span>{{ error }}</span>
+                              {% endfor %}
+                          </div>
+                      {% else %}
+                          {{ form.number(class="form-control form-control-lg") }}
+                      {% endif %}
+                  </div>
+                  <div class="textbox">
+                    {{ form.name.label(class="form-control-label") }}
+                    {% if form.name.errors %}
+                            {{ form.name(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.name.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.name(class="form-control form-control-lg") }}
+                        {% endif %}
+                </div>
+                  <div class="textbox">
+                      {{ form.rating.label(class="form-control-label") }}
+                      {% if form.rating.errors %}
+                          {{ form.rating(class="form-control form-control-lg is-invalid") }}
+                          <div class="invalid-feedback">
+                              {% for error in form.rating.errors %}
+                                  <span>{{ error }}</span>
+                              {% endfor %}
+                          </div>
+                      {% else %}
+                          {{ form.rating(class="form-control form-control-lg") }}
+                      {% endif %}
+                  </div>
+                  <div class="textbox">
+                      {{ form.motor.label(class="form-control-label") }}
+                      {% if form.motor.errors %}
+                              {{ form.motor(class="form-control form-control-lg is-invalid") }}
+                              <div class="invalid-feedback">
+                                  {% for error in form.motor.errors %}
+                                      <span>{{ error }}</span>
+                                  {% endfor %}
+                              </div>
+                          {% else %}
+                              {{ form.motor(class="form-control form-control-lg") }}
+                          {% endif %}
+                  </div>
+                  <div class="textbox">
+                    {{ form.location.label(class="form-control-label") }}
+                    {% if form.location.errors %}
+                            {{ form.number_of_poles(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.location.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.location(class="form-control form-control-lg") }}
+                        {% endif %}
+                </div>
+                <div class="textbox">
+                    {{ form.starter.label(class="form-control-label") }}
+                    {% if form.starter.errors %}
+                            {{ form.starter(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.starter.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.starter(class="form-control form-control-lg") }}
+                        {% endif %}
+                </div>
+                                          <br>
+                  <div class="form-group">
+                      {{ form.submit(class="btn btn-outline-info") }}
+                  </div>
+          </form>
+          <div >
+        </div> 
+  </div>
+  
+{% endblock %}

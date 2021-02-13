@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+       table, th, td {
+         border: 1px solid black;
+       }
+     </style>>
+</head>
+<body>
+{% block content %}
+<form method="POST" action="">
+    {{form.hidden_tag() }}
+      <div class="textbox">
+          {{ form.motors.label(class="form-control-label") }}
+          {% if form.motors.errors %}
+              {{ form.motors(class="form-control form-control-lg is-invalid") }}
+              <div class="invalid-feedback">
+                  {% for error in form.motors.errors %}
+                      <span>{{ error }}</span>
+                  {% endfor %}
+              </div>
+          {% else %}
+              {{ form.motors(class="form-control form-control-lg") }}
+          {% endif %}
+      </div>  
+    <div class="form-group">
+        {{ form.submit(class="btn btn-outline-info") }}
+    </div>
+</form>
+<div>
+   <ul id='motors.list'>
+       <li>
+           <span>Serial Number</span>
+           <span>{{ motors.serial_number}}</span>
+       </li>
+       <li>
+           <span>Rating</span>
+           <span>{{ motors.rating}}</span>
+       </li>
+       <li>
+           <span>Current</span>
+           <span>{{ motors.current}}</span>
+       </li>
+       <li>
+           <span>Frame Size}</span>
+           <span>{{ motors.frame_size}}</span>
+       </li>
+       <li>
+           <span>Number of Poles</span>
+           <span>{{ motors.number_of_poles}}</span>
+       </li>
+       
+   </ul>
+</div>
+<br>
+
+<div class = 'container'>
+    <table>
+        <tr>
+            <th> Serial NUmber </th>
+            <th> Rating(KW) </th>
+            <th> Voltage </th>
+            <th> Current </th>
+            <th> Frame Size </th>
+            <th> Number of Poles </th>
+        </tr>
+        <tr> 
+            <td> {{ motors.serial_number}} </td>
+            <td> {{ motors.rating}} </td>
+            <td> {{ motors.voltage}} </td>
+            <td> {{ motors.current}} </td>
+            <td> {{ motors.frame_size}} </td>
+            <td> {{ motors.number_of_poles}} </td>
+        </tr>
+       
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="content-section">
+    <div class="media">
+      <div class="media-body">
+        <h2 class="ml-2">{{ current_user.first_name }} {{ current_user.last_name }}</h2>
+        <p class="ml-2">{{ current_user.email }}</p>
+      </div>
+    </div>
+     <div class = 'panel'>   
+          <div class='form_header'>
+              <h1> </h1>
+          </div>
+          <form method="POST" action="">
+              {{form.hidden_tag() }}
+                  <div class="textbox">
+                      {{ form.faults.label(class="form-control-label") }}
+                      {% if form.faults.errors %}
+                          {{ form.faults(class="form-control form-control-lg is-invalid") }}
+                          <div class="invalid-feedback">
+                              {% for error in form.faults.errors %}
+                                  <span>{{ error }}</span>
+                              {% endfor %}
+                          </div>
+                      {% else %}
+                          {{ form.faults(class="form-control form-control-lg") }}
+                      {% endif %}
+                  </div>
+                <div class="textbox">
+                    {{ form.reporter.label(class="form-control-label") }}
+                    {% if form.reporter.errors %}
+                            {{ form.reporter(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.reporter.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.reporter(class="form-control form-control-lg") }}
+                        {% endif %}
+                </div>
+                  <div class="textbox">
+                      {{ form.usage.label(class="form-control-label") }}
+                      {% if form.usage.errors %}
+                          {{ form.usage(class="form-control form-control-lg is-invalid") }}
+                          <div class="invalid-feedback">
+                              {% for error in form.usage.errors %}
+                                  <span>{{ error }}</span>
+                              {% endfor %}
+                          </div>
+                      {% else %}
+                          {{ form.usage(class="form-control form-control-lg") }}
+                      {% endif %}
+                  </div>
+                  
+                                          <br>
+                  <div class="form-group">
+                      {{ form.submit(class="btn btn-outline-info") }}
+                  </div>
+          </form>
+          <div >
+        </div> 
+  </div>
+  
+{% endblock %}
