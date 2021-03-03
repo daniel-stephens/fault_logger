@@ -93,7 +93,7 @@ class FunctionForm(FlaskForm):
     number = StringField('Number', validators=[DataRequired()])
     name = StringField('Function Name', validators=[DataRequired()])
     rating = IntegerField('rating', validators=[DataRequired()])
-    motor = QuerySelectField(query_factory = motors_query, allow_blank=False, get_label='serial_number')
+    motor = StringField('Motor')
     location =  QuerySelectField(query_factory = location_query, allow_blank=False, get_label='location')
     starter = QuerySelectField(query_factory = starter_query, allow_blank=False, get_label='name')
     submit = SubmitField('Submit')
@@ -101,14 +101,18 @@ class FunctionForm(FlaskForm):
 
 class FaultForm(FlaskForm):
     faults = QuerySelectField(query_factory = fault_query, allow_blank=True, get_label='fault')
-    reporter = QuerySelectField(query_factory = user_query, allow_blank=True, get_label='email')
-    usage = QuerySelectField(query_factory = funciton_query, allow_blank=False, get_label='number') 
+    reporter = StringField('Reporter')
+    usage = StringField('Function') 
     submit = SubmitField('Submit')
 
 class SearchForm(FlaskForm):
     motors = StringField('Search Motors', validators=[DataRequired()])
     submit = SubmitField('Search')
 
-class Form(FlaskForm):
-    motors = StringField('Search Motors', validators=[DataRequired()])
+# class Form(FlaskForm):
+#     motors = StringField('Search Motor', validators=[DataRequired()])
+#     submit = SubmitField('Search')
+
+class LocationForm(FlaskForm):
+    location = StringField('Search Location', validators=[DataRequired()])
     submit = SubmitField('Search')

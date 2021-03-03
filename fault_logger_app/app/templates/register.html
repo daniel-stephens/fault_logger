@@ -1,12 +1,10 @@
 {% extends "layout.html" %}
 {% block content %}
-<div class="panel">
-    <div class='form_header'>
-        <h1>Sign Up</h1>
-    </div>
+<div class="content-section">
+
     <form method="POST" action="">
         {{form.hidden_tag() }}
-            <div class="textbox">
+            <div class="form-group">
                 {{ form.first_name.label(class="form-control-label") }}
                 {% if form.first_name.errors %}
                     {{ form.first_name(class="form-control form-control-lg is-invalid") }}
@@ -98,3 +96,7 @@
     </p>
 </div>
 {% endblock content %}
+
+
+
+

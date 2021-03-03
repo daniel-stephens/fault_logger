@@ -7,13 +7,14 @@
         <p class="ml-2">{{ current_user.email }}</p>
       </div>
     </div>
-     <div class = 'panel'>   
-          <div class='form_header'>
-              <h1> Add Motors</h1>
-          </div>
+     <div class = 'content-section'>   
+
           <form method="POST" action="">
               {{form.hidden_tag() }}
-                <div class="textbox">
+              <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Add Motors </legend>
+                <div class="form-group">
+
                     {{ form.serial_number.label(class="form-control-label") }}
                     {% if form.serial_number.errors %}
                         {{ form.serial_number(class="form-control form-control-lg is-invalid") }}
@@ -26,7 +27,7 @@
                         {{ form.serial_number(class="form-control form-control-lg") }}
                     {% endif %}
                 </div>  
-                  <div class="textbox">
+                  <div class="form-group">
                       {{ form.rating.label(class="form-control-label") }}
                       {% if form.rating.errors %}
                           {{ form.rating(class="form-control form-control-lg is-invalid") }}
@@ -39,7 +40,7 @@
                           {{ form.rating(class="form-control form-control-lg") }}
                       {% endif %}
                   </div>
-                  <div class="textbox">
+                  <div class="form-group">
                     {{ form.voltage.label(class="form-control-label") }}
                     {% if form.voltage.errors %}
                             {{ form.voltage(class="form-control form-control-lg is-invalid") }}
@@ -52,7 +53,7 @@
                             {{ form.voltage(class="form-control form-control-lg") }}
                         {% endif %}
                 </div>
-                  <div class="textbox">
+                  <div class="form-group">
                       {{ form.current.label(class="form-control-label") }}
                       {% if form.current.errors %}
                           {{ form.current(class="form-control form-control-lg is-invalid") }}
@@ -65,7 +66,7 @@
                           {{ form.current(class="form-control form-control-lg") }}
                       {% endif %}
                   </div>
-                  <div class="textbox">
+                  <div class="form-group">
                       {{ form.frame_size.label(class="form-control-label") }}
                       {% if form.frame_size.errors %}
                               {{ form.frame_size(class="form-control form-control-lg is-invalid") }}
@@ -78,7 +79,7 @@
                               {{ form.frame_size(class="form-control form-control-lg") }}
                           {% endif %}
                   </div>
-                  <div class="textbox">
+                  <div class="form-group">
                     {{ form.number_of_poles.label(class="form-control-label") }}
                     {% if form.number_of_poles.errors %}
                             {{ form.number_of_poles(class="form-control form-control-lg is-invalid") }}
@@ -91,6 +92,7 @@
                             {{ form.number_of_poles(class="form-control form-control-lg") }}
                         {% endif %}
                 </div>
+            </fieldset>
                                           <br>
                   <div class="form-group">
                       {{ form.submit(class="btn btn-outline-info") }}

@@ -1,17 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <style>
-       table, th, td {
-         border: 1px solid black;
-       }
-     </style>>
-</head>
-<body>
+{% extends "layout.html" %}
+
 {% block content %}
 <form method="POST" action="">
     {{form.hidden_tag() }}
-      <div class="textbox">
+      <div class="form-group">
           {{ form.motors.label(class="form-control-label") }}
           {% if form.motors.errors %}
               {{ form.motors(class="form-control form-control-lg is-invalid") }}
@@ -55,7 +47,7 @@
 </div>
 <br>
 
-<div class = 'container'>
+<div class = 'content-section'>
     <table>
         <tr>
             <th> Serial NUmber </th>
@@ -73,7 +65,4 @@
             <td> {{ motors.frame_size}} </td>
             <td> {{ motors.number_of_poles}} </td>
         </tr>
-       
 {% endblock %}
-</body>
-</html>

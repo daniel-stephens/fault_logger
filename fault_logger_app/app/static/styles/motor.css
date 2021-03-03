@@ -59,7 +59,7 @@ html{
 }
 
 body{
-    background-image: url(images/motors.png);
+    background-image: url(static/images/motors.png);
     background-position: center;
     background-size: cover;
     display: flex;

@@ -4,16 +4,15 @@
     <div class="media">
       <div class="media-body">
         <h2 class="ml-2">{{ current_user.first_name }} {{ current_user.last_name }}</h2>
-        <p class="ml-2">{{ current_user.email }}</p>
+    
       </div>
     </div>
-     <div class = 'panel'>   
-          <div class='form_header'>
-              <h1> MOTOR USAGE</h1>
-          </div>
+     <div class = 'form-group'>   
+        <legend class="border-bottom mb-4"> Motors Usage </legend>
+                
           <form method="POST" action="">
               {{form.hidden_tag() }}
-                  <div class="textbox">
+                  <div class="form-group">
                       {{ form.number.label(class="form-control-label") }}
                       {% if form.number.errors %}
                           {{ form.number(class="form-control form-control-lg is-invalid") }}
@@ -26,7 +25,7 @@
                           {{ form.number(class="form-control form-control-lg") }}
                       {% endif %}
                   </div>
-                  <div class="textbox">
+                  <div class="form-group">
                     {{ form.name.label(class="form-control-label") }}
                     {% if form.name.errors %}
                             {{ form.name(class="form-control form-control-lg is-invalid") }}
@@ -39,7 +38,7 @@
                             {{ form.name(class="form-control form-control-lg") }}
                         {% endif %}
                 </div>
-                  <div class="textbox">
+                  <div class="form-group">
                       {{ form.rating.label(class="form-control-label") }}
                       {% if form.rating.errors %}
                           {{ form.rating(class="form-control form-control-lg is-invalid") }}
@@ -52,7 +51,7 @@
                           {{ form.rating(class="form-control form-control-lg") }}
                       {% endif %}
                   </div>
-                  <div class="textbox">
+                  <div class="form-group">
                       {{ form.motor.label(class="form-control-label") }}
                       {% if form.motor.errors %}
                               {{ form.motor(class="form-control form-control-lg is-invalid") }}
@@ -65,7 +64,7 @@
                               {{ form.motor(class="form-control form-control-lg") }}
                           {% endif %}
                   </div>
-                  <div class="textbox">
+                  <div class="form-group">
                     {{ form.location.label(class="form-control-label") }}
                     {% if form.location.errors %}
                             {{ form.number_of_poles(class="form-control form-control-lg is-invalid") }}
@@ -78,7 +77,7 @@
                             {{ form.location(class="form-control form-control-lg") }}
                         {% endif %}
                 </div>
-                <div class="textbox">
+                <div class="form-group">
                     {{ form.starter.label(class="form-control-label") }}
                     {% if form.starter.errors %}
                             {{ form.starter(class="form-control form-control-lg is-invalid") }}
