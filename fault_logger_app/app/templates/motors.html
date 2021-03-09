@@ -53,19 +53,58 @@
                             {{ form.voltage(class="form-control form-control-lg") }}
                         {% endif %}
                 </div>
+                <div class="form-group">
+                    {{ form.speed.label(class="form-control-label") }}
+                    {% if form.speed.errors %}
+                        {{ form.speed(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.speed.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.speed(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.pf.label(class="form-control-label") }}
+                    {% if form.pf.errors %}
+                        {{ form.pf(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.pf.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.pf(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
                   <div class="form-group">
-                      {{ form.current.label(class="form-control-label") }}
-                      {% if form.current.errors %}
-                          {{ form.current(class="form-control form-control-lg is-invalid") }}
+                      {{ form.amp.label(class="form-control-label") }}
+                      {% if form.amp.errors %}
+                          {{ form.amp(class="form-control form-control-lg is-invalid") }}
                           <div class="invalid-feedback">
-                              {% for error in form.current.errors %}
+                              {% for error in form.amp.errors %}
                                   <span>{{ error }}</span>
                               {% endfor %}
                           </div>
                       {% else %}
-                          {{ form.current(class="form-control form-control-lg") }}
+                          {{ form.amp(class="form-control form-control-lg") }}
                       {% endif %}
                   </div>
+                  <div class="form-group">
+                    {{ form.phase.label(class="form-control-label") }}
+                    {% if form.phase.errors %}
+                        {{ form.phase(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.phase.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.phase(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
                   <div class="form-group">
                       {{ form.frame_size.label(class="form-control-label") }}
                       {% if form.frame_size.errors %}

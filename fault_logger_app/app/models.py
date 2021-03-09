@@ -57,11 +57,11 @@ class Faults(db.Model):
 class Motors(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     serial_number = db.Column(db.String(60), unique=True, nullable=False )
-    rating = db.Column(db.Integer, unique=False, nullable=False)
+    rating = db.Column(db.Float, unique=False, nullable=False)
     voltage = db.Column(db.Integer, unique=False, nullable=False)
     speed = db.Column(db.Integer, unique=False, nullable=False)
-    pf = db.Column(db.Integer, unique = False, nullable = False)
-    amp = db.Column(db.Integer, unique=False, nullable=False)
+    pf = db.Column(db.Float, unique = False, nullable = False)
+    amp = db.Column(db.Float, unique=False, nullable=False)
     phase = db.Column(db.Integer, unique=False, nullable=False)
     frame_size = db.Column(db.String(60), nullable=True)
     number_of_poles = db.Column(db.Integer, unique=False, nullable=True)
@@ -69,7 +69,7 @@ class Motors(db.Model):
     date_created = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     
     def __repr__(self):
-        return f"Motors('{self.serial_number}','{self.rating}', '{self.voltage}', '{self.current}', '{self.frame_size}', '{self.number_of_poles}', '{self.date_created}')"
+        return f"Motors('{self.serial_number}','{self.rating}', '{self.voltage}', '{self.speed}', '{self.pf}', '{self.amp}', '{self.phase}', '{self.frame_size}', '{self.number_of_poles}', '{self.date_created}')"
 
 
 class Location(db.Model):

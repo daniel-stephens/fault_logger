@@ -82,12 +82,24 @@ def account():
 def motor_log():
     form = MotorForm()
     if form.validate_on_submit():
-        motor = Motors(serial_number=form.serial_number.data, rating=form.rating.data, voltage=form.voltage.data, current=form.current.data,
-                       frame_size=form.frame_size.data, number_of_poles=form.number_of_poles.data)
-        db.session.add(motor)
-        db.session.commit()
-        flash(f'Motor has been created in the database', 'Success')
-        return redirect(url_for('home'))
+        try:
+            motor = Motors(serial_number=form.serial_number.data, 
+                            rating=form.rating.data, 
+                            voltage=form.voltage.data, 
+                            speed=form.speed.data,
+                            pf=form.pf.data, 
+                            amp=form.amp.data, 
+                            phase=form.phase.data, 
+                            frame_size=form.frame_size.data,
+                            number_of_poles=form.number_of_poles.data)
+            db.session.add(motor)
+            db.session.commit()
+            flash(f'Motor has been created in the database', 'Success')
+            return redirect(url_for('motor_log'))
+
+        except:
+            flash(f'There was an Error. Please Try Again', 'Warning')
+            return redirect(url_for('motor_log'))
 
     return render_template('motors.html', title='Motors',
                            form=form)
@@ -97,16 +109,18 @@ def motor_log():
 def functions_log():
     form = FunctionForm()
     if form.validate_on_submit():
-
-        motors = form.motor.data
-        motor = Motors.query.filter_by(serial_number=motors).first()
-
-        function = Function(number=form.number.data, name=form.name.data, rating=form.rating.data,
-                            motor=motor, location=form.location.data, starter=form.starter.data)
-        db.session.add(function)
-        db.session.commit()
-        flash(f'Motor usage has been created in the database', 'Success')
-        return redirect(url_for('home'))
+        try:
+            motors = form.motor.data
+            motor = Motors.query.filter_by(serial_number=motors).first()
+            function = Function(number=form.number.data, name=form.name.data, rating=form.rating.data,
+                                motor=motor, location=form.location.data, starter=form.starter.data)
+            db.session.add(function)
+            db.session.commit()
+            flash(f'Motor usage has been created in the database', 'Success')
+            return redirect(url_for('functions_log'))
+        except :
+            flash(f'There was an Error, Please try again', 'Warning')
+            return redirect(url_for('functions_log'))
 
     return render_template('functions.html', title='Function', form=form)
 
@@ -117,17 +131,20 @@ def faults_log():
     form = FaultForm()
 
     if form.validate_on_submit():
-        current_user.first_name = form.usage.data
-        reporter = User.query.filter_by(email=form.reporter.data).first()
-        funct = form.usage.data
-        usage = Function.query.filter_by(number=funct).first()
-        
-        fault = Fault_log(fault=form.faults.data, reporter=reporter,
-                          usage=usage)
-        db.session.add(fault)
-        db.session.commit()
-        flash(f'Motor fault has been created in the database', 'Success')
-        return redirect(url_for('home'))
+        try:
+            # current_user.first_name = form.usage.data
+            reporter = User.query.filter_by(email=form.reporter.data).first()
+            usage = Function.query.filter_by(number=form.usage.data).first()
+            
+            fault = Fault_log(fault=form.faults.data, reporter=reporter,
+                            usage=usage)
+            db.session.add(fault)
+            db.session.commit()
+            flash(f'Motor fault has been created in the database', 'Success')
+            return redirect(url_for('faults_log'))
+        except :
+            flash(f'There was an error. Please try again', 'Warning')
+            return redirect(url_for('faults_log'))
 
     return render_template('faults.html', title='Fault', form=form)
 

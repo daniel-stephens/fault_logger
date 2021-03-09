@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms_sqlalchemy.fields import QuerySelectField
 from flask_login import current_user
-from wtforms import StringField, PasswordField, SubmitField, BooleanField, IntegerField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, IntegerField, FloatField
 from  wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from app.models import User, Position, Location, Motors, Starter, Faults, Function
 
@@ -59,16 +59,12 @@ class LoginForm(FlaskForm):
 
 
 class UpdateAccountForm(FlaskForm):
-    first_name = StringField('First Name',
-                           validators=[DataRequired(), Length(min=2, max=20)])
-    last_name = StringField('Last Name',
-                           validators=[DataRequired(), Length(min=2, max=20)])
-    position = StringField('Position',
-                        validators=[DataRequired(), Email()])
-
-    email = StringField('Email',
-                        validators=[DataRequired(), Email()])
-     
+    first_name = StringField('First Name', validators=[DataRequired(), 
+                Length(min=2, max=20)])
+    last_name = StringField('Last Name', validators=[DataRequired(), 
+                Length(min=2, max=20)])
+    position = position = QuerySelectField(query_factory = position_query, allow_blank=True, get_label='position')
+    email = StringField('Email', validators=[DataRequired(), Email()])
     submit = SubmitField('Update')
 
     def validate_email(self, email):
@@ -80,9 +76,12 @@ class UpdateAccountForm(FlaskForm):
 
 class MotorForm(FlaskForm):
     serial_number = StringField('Serial Number', validators=[DataRequired()])
-    rating = IntegerField('Rating', validators=[DataRequired()])
+    rating = FloatField('Rating', validators=[DataRequired()])
     voltage = IntegerField('Voltage', validators=[DataRequired()])
-    current = IntegerField('Current', validators=[DataRequired()])
+    speed = IntegerField('Speed', validators=[DataRequired()])
+    pf = FloatField('Power Factor', validators=[DataRequired()])
+    amp = FloatField('Current', validators=[DataRequired()])
+    phase = IntegerField('Phases', validators=[DataRequired()])
     frame_size = StringField('Frame Size', validators=[DataRequired()])
     number_of_poles = IntegerField('Number of Poles', validators=[DataRequired()]) 
     submit = SubmitField('Submit')
